@@ -18,7 +18,7 @@ public class Main {
 		BufferedReader reader = new BufferedReader(istream);
 		
 		while(true) {
-			System.out.print("> ");
+			System.out.print("eval> ");
 			try {
 				c.eval(reader.readLine());
 			} catch (CalculatorException e) {

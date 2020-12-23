@@ -81,14 +81,19 @@ public class Calculator {
     public void eval(String expr) throws CalculatorException {
         char[] chBuf = expr.toCharArray();
 
-        for(final char ch : chBuf) {
-            currentState.readChar(ch);
+        try {
+        	for(final char ch : chBuf) {
+        		currentState.readChar(ch);
+        	}
+        } finally {
+        	this.currentState = new FirstOperandCalculatorState(this);
         }
-
-        this.currentState = new FirstOperandCalculatorState(this);
-
-        if(!gotCalledBack)
+        
+        if(!gotCalledBack) {
             throw new CalculatorException(CalculatorFault.INVALID_STRING);
+        } else {
+        	gotCalledBack = false;
+        }
     }
     // END
     // of public interface
