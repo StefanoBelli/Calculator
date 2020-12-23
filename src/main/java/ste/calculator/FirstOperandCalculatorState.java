@@ -9,8 +9,11 @@ class FirstOperandCalculatorState extends CalculatorState {
 
     private void parseFirstNumberThenSetState(char c, CalculatorState nextState) 
     		throws CalculatorException {
-    	
-    	this.context.setFirstOperand(Integer.parseInt(firstNumber));
+    	try {
+    		this.context.setFirstOperand(Integer.parseInt(firstNumber));
+    	} catch(NumberFormatException e) {
+    		throw new CalculatorException(CalculatorFault.INVALID_STRING);
+    	}
         this.context.setCurrentState(nextState);
     }
 

@@ -12,8 +12,12 @@ class SecondOperandCalculatorState extends CalculatorState {
         if(Character.isDigit(ch)) {
             secondNumber += ch;
         } else if(ch == ';') {
-        	this.context.setSecondOperand(Integer.parseInt(secondNumber));
-
+        	try {
+        		this.context.setSecondOperand(Integer.parseInt(secondNumber));
+        	} catch(NumberFormatException e) {
+        		throw new CalculatorException(CalculatorFault.INVALID_STRING);
+        	}
+        	
             try {
                 this.context.result(
                     this.context.getOperator().result(
