@@ -7,10 +7,10 @@ GoF state pattern example
 
 ![UML class diagram](CalculatorCD.jpg)
 
-### Compile, run test and code coverage
+### Clean, compile, run test and code coverage
 
 ```
-$ mvn clean compile jacoco:report test jacoco:report
+$ mvn clean compile jacoco:prepare-agent test jacoco:report
 ```
 
 ### Main class
