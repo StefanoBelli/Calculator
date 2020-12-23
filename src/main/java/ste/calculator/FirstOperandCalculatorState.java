@@ -7,13 +7,10 @@ class FirstOperandCalculatorState extends CalculatorState {
         super(context);
     }
 
-    private void parseFirstNumberThenSetState(char c, CalculatorState nextState) throws CalculatorException {
-        try {
-            this.context.setFirstOperand(Integer.parseInt(firstNumber));
-        } catch(NumberFormatException e) {
-            throw new CalculatorException(CalculatorFault.INVALID_STRING);
-        }
-
+    private void parseFirstNumberThenSetState(char c, CalculatorState nextState) 
+    		throws CalculatorException {
+    	
+    	this.context.setFirstOperand(Integer.parseInt(firstNumber));
         this.context.setCurrentState(nextState);
     }
 
